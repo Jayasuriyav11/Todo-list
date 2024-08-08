@@ -4,127 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<link rel="stylesheet"  href="style.css">
+    <link rel="stylesheet" href="tlist.css">
 </head>
 <body>
-    <div id="main">
-        <h2>Todo List</h2>
-         
-        <label class="lb">TASK
-            <input type="text" id="input">
-        </label>
-        <button onclick="click()" id="button">add</button>
-        <div id="todolist">
-            
-        
+    <div id="container">
+        <div id="main">
+            <h2>To-Do List app</h2>
+                <label>
+                <input type="text" id="text-inp">
+                </label>
+                <button onclick="addTask()" id="addbtn">Add</button>
+                <ul id="list-container">
+                    
+                </ul>
         </div>
+    </div>
+    <script>
+        const inputBox = document.getElementById('text-inp');
+        const listcontainer = document.getElementById('list-container');
+        function addTask(){
+        if(inputBox.value == ''){
+            alert("You must write something!")
+
+        }
+        else{
+            let li = document.createElement("li");
+            li.innerHTML = inputBox.value;
+            listcontainer.appendChild(li);
+            // let span = document.getElementById("span");
+            // span.innerHTML = '\u00d7';
+            // li.appendChild(span);
+
+            li.addEventListener('click', () => {
+                  li.style.textDecoration = 'line-through';
+                
+             });  
+             li.addEventListener('dblclick', () => {
+                  listcontainer.removeChild(li);
                   
-                 
-    </div>
+             });
 
-
-</body>
-    <script>
-       
-       let button = document.getElementById ('button');
-       let todolist = document.getElementById('todolist');
-       let input = document.getElementById('input')
-       let todos =[];
-
-       button.addEventListener('click', ()=>{
-            //   todos.push(input.value)
-            //   console.log(todos)
-            //   addtodo(input.value)
-            //   input.value=''
-                 document.getElementById('todolist').innerHTML=console.log(input.value);
-                 
-
-       })
-
-    
+        }
+        }
         
-    function addtodo(todo){
-             let para = document.createElement('p');
-            
-             para.innerText = todo;
-             todolist.appendChild(para)
-             para.addEventListener(click,()=>{
-                  para.style.textDecoration = 'line-through'
-                  remove(todo)
-             })
-             para.addEventListener('dblclick',()=>{
-                todolist.removeChild(para)
-                remove(todo)
-             })
-    }
-    function remove(todo){
-        let index=todos.indexOf(todo)
-        if(index>-1)
-           todos.splice(index,1)
-    }
-
-    
-    </script>     
-  </body>
-</html> 
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="main">
-        <h2>Todo List</h2>
-        <label class="lb">TASK
-            <input type="text" id="input">
-        </label>
-        <button type="button" id="add">Add</button>
-        <div id="todolist">
-            
-            
-
-        </div>
-    </div>
-
-    <script>
-       let button = document.getElementById('add');
-       let todolist = document.getElementById('todolist');
-       let input = document.getElementById('input');
-       let todos = [];
-
-       button.addEventListener('click', () => {
-              todos.push(input.value);
-              document.write(todos)
-              addtodo(input.value);
-              input.value = '';
-       });
-
-       function addtodo(todo) {
-             let para = document.createElement('p');
-             para.innerText = todo;
-             todolist.appendChild(para);
-             para.addEventListener('click', () => {
-                  para.style.textDecoration = 'line-through';
-                  remove(todo);
-             });
-             para.addEventListener('dblclick', () => {
-                todolist.removeChild(para);
-                remove(todo);
-             });
-       }
-
-       function remove(todo) {
-           let index = todos.indexOf(todo);
-           if(index > -1)
-              todos.splice(index, 1);
-       }
     </script>
 </body>
-</html>
-
- -->
+</html> 
+ 
